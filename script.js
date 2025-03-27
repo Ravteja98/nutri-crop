@@ -9,21 +9,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Form Submission
-    const contactForm = document.querySelector('.contact-form');
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = contactForm.querySelector('input[type="text"]').value;
-        const email = contactForm.querySelector('input[type="email"]').value;
-        const message = contactForm.querySelector('textarea').value;
+// Form Submission
+	const contactForm = document.querySelector('.contact-form');
+	contactForm.addEventListener('submit', (e) => {
+		const name = contactForm.querySelector('input[name="name"]').value;
+		const email = contactForm.querySelector('input[name="email"]').value;
+		const message = contactForm.querySelector('textarea[name="message"]').value;
+		if (!name || !email || !message)
+			{
+				e.preventDefault(); // Prevent form submission if fields are empty
+				alert('Please fill in all fields.');
+			} else {
+        // Allow form submission
+        alert(`Thank you, ${name}! Your message has been sent.`);
+    }
+});
 
-        if (name && email && message) {
-            alert(`Thank you, ${name}! Your message has been sent.`);
-            contactForm.reset();
-        } else {
-            alert('Please fill in all fields.');
-        }
-    });
 
     // Animated Progress Bars (Example for Services Section)
     const serviceItems = document.querySelectorAll('.service-item');
